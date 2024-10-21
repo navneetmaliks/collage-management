@@ -1,5 +1,6 @@
 const express=require('express')
 const bodyParser=require('body-parser');
+const cors=require('cors')
 const fileUpload=require('express-fileupload')
 const CustomError=require('./utils/CustomError')
 const globalErrorHandler=require('./controllers/errorConotroller')
@@ -14,6 +15,7 @@ const feeRoutes=require('./routes/feeRoutes')
 
 const app=express();
 app.use(bodyParser.json());
+app.use(cors())
 app.use(fileUpload({
     useTempFiles : true,
     // tempFileDir : '/tmp/'

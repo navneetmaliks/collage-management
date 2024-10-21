@@ -59,7 +59,7 @@ const getSingleStudent=asyncWraper(async(req,res,next)=>{
     if(!studentID){
         return next(new CustomError('invalid id',400))
     }
-    const student=await studentModel.find({_id:studentID})
+    const student=await studentModel.find({_id:studentID}).populate({path:'courseID',model:'Course'})
     if(!student){
         return next(new CustomError(`no student found with id ${studentID}`,400))
     }

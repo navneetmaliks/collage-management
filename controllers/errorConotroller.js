@@ -59,6 +59,10 @@ module.exports=(error,req,res,next)=>{
     error.status=error.status || 'error';
 
     if(process.env.NODE_ENV==='development'){
+        // if(error.name==='ValidationError') error=validationErrorHandler(error);
+        // if(error.name==='CastError') error=castErrorHandler(error);
+        // if(error.code===11000) error=duplicateErrorHandler(error);
+        // if(error.name==='TypeError') error=typeErrorHandler(error);
         devError(res,error);
 
     }else if(process.env.NODE_ENV==='production'){
